@@ -1,0 +1,10 @@
+[Image]
+Architecture: amd64
+Archive-Areas: main
+Distribution: stretch
+Mirror-Bootstrap: http://http.us.debian.org/debian
+
+[FIXME]
+Configuration-Version: 20161101
+Name: live-image
+Type: iso-hybrid

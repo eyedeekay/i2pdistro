@@ -1,0 +1,192 @@
+#### Contents of the preconfiguration file (for buster)
+### Localization
+# Preseeding only locale sets language, country and locale.
+d-i debian-installer/locale string en_US
+d-i netcfg/get_hostname string unassigned-hostname
+d-i netcfg/get_domain string unassigned-domain
+d-i netcfg/hostname string host
+d-i hw-detect/load_firmware boolean true
+
+### Network console
+# Use the following settings if you wish to make use of the network-console
+# component for remote installation over SSH. This only makes sense if you
+# intend to perform the remainder of the installation manually.
+#d-i anna/choose_modules string network-console
+#d-i network-console/authorized_keys_url string http://10.0.0.1/openssh-key
+#d-i network-console/password password r00tme
+#d-i network-console/password-again password r00tme
+
+### Mirror settings
+# If you select ftp, the mirror/country string does not need to be set.
+#d-i mirror/protocol string ftp
+d-i mirror/country string manual
+d-i mirror/http/hostname string http.us.debian.org
+d-i mirror/http/directory string /debian
+d-i mirror/http/proxy string
+d-i mirror/suite string sid
+d-i mirror/udeb/suite string sid
+d-i passwd/root-login boolean false
+
+# Root password, either in clear text
+#d-i passwd/root-password password r00tme
+#d-i passwd/root-password-again password r00tme
+# or encrypted using a crypt(3)  hash.
+#d-i passwd/root-password-crypted password [crypt(3) hash]
+
+# To create a normal user account.
+#d-i passwd/user-fullname string Debian User
+#d-i passwd/username string debian
+# Normal user's password, either in clear text
+#d-i passwd/user-password password insecure
+#d-i passwd/user-password-again password insecure
+# or encrypted using a crypt(3) hash.
+#d-i passwd/user-password-crypted password [crypt(3) hash]
+# Create the first user with the specified UID instead of the default.
+#d-i passwd/user-uid string 1010
+
+# The user account will be added to some standard initial groups. To
+# override that, use this.
+#d-i passwd/user-default-groups string audio cdrom video
+
+### Clock and time zone setup
+# Controls whether or not the hardware clock is set to UTC.
+d-i clock-setup/utc boolean true
+
+# You may set this to any valid setting for $TZ; see the contents of
+# /usr/share/zoneinfo/ for valid values.
+# d-i time/zone string US/Eastern
+
+# Controls whether to use NTP to set the clock during the install
+d-i clock-setup/ntp boolean true
+# NTP server to use. The default is almost always fine here.
+#d-i clock-setup/ntp-server string ntp.example.com
+
+d-i partman-auto/method string lvm
+
+# If one of the disks that are going to be automatically partitioned
+# contains an old LVM configuration, the user will normally receive a
+# warning. This can be preseeded away...
+d-i partman-lvm/device_remove_lvm boolean true
+# The same applies to pre-existing software RAID array:
+d-i partman-md/device_remove_md boolean true
+# And the same goes for the confirmation to write the lvm partitions.
+d-i partman-lvm/confirm boolean true
+d-i partman-lvm/confirm_nooverwrite boolean true
+
+# You can choose one of the three predefined partitioning recipes:
+# - atomic: all files in one partition
+# - home:   separate /home partition
+# - multi:  separate /home, /var, and /tmp partitions
+d-i partman-auto/choose_recipe select atomic
+
+# Or provide a recipe of your own...
+# If you have a way to get a recipe file into the d-i environment, you can
+# just point at it.
+#d-i partman-auto/expert_recipe_file string /hd-media/recipe
+
+# This makes partman automatically partition without confirmation, provided
+# that you told it what to do using one of the methods above.
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+
+## Controlling how partitions are mounted
+# The default is to mount by UUID, but you can also choose "traditional" to
+# use traditional device names, or "label" to try filesystem labels before
+# falling back to UUIDs.
+#d-i partman/mount_style select uuid
+
+### Apt setup
+# You can choose to install non-free and contrib software.
+#d-i apt-setup/non-free boolean true
+#d-i apt-setup/contrib boolean true
+# Uncomment this if you don't want to use a network mirror.
+#d-i apt-setup/use_mirror boolean false
+# Select which update services to use; define the mirrors to be used.
+# Values shown below are the normal defaults.
+#d-i apt-setup/services-select multiselect security, updates
+#d-i apt-setup/security_host string security.debian.org
+
+# Additional repositories, local[0-9] available
+#d-i apt-setup/local0/repository string \
+#       http://local.server/debian stable main
+#d-i apt-setup/local0/comment string local server
+# Enable deb-src lines
+#d-i apt-setup/local0/source boolean true
+# URL to the public key of the local repository; you must provide a key or
+# apt will complain about the unauthenticated repository and so the
+# sources.list line will be left commented out
+#d-i apt-setup/local0/key string http://local.server/key
+
+tasksel tasksel/first multiselect standard ca-certificates
+d-i pkgsel/include string ca-certificates mate-desktop build-essential
+d-i pkgsel/upgrade select safe-upgrade
+
+popularity-contest popularity-contest/participate boolean false
+
+# This is fairly safe to set, it makes grub install automatically to the MBR
+# if no other operating system is detected on the machine.
+d-i grub-installer/only_debian boolean true
+
+# This one makes grub-installer install to the MBR if it also finds some other
+# OS, which is less safe as it might not be able to boot that other OS.
+d-i grub-installer/with_other_os boolean true
+
+# Due notably to potential USB sticks, the location of the MBR can not be
+# determined safely in general, so this needs to be specified:
+#d-i grub-installer/bootdev  string /dev/sda
+# To install to the first device (assuming it is not a USB stick):
+#d-i grub-installer/bootdev  string default
+
+# Alternatively, if you want to install to a location other than the mbr,
+# uncomment and edit these lines:
+#d-i grub-installer/only_debian boolean false
+#d-i grub-installer/with_other_os boolean false
+#d-i grub-installer/bootdev  string (hd0,1)
+# To install grub to multiple disks:
+#d-i grub-installer/bootdev  string (hd0,1) (hd1,1) (hd2,1)
+
+# Optional password for grub, either in clear text
+#d-i grub-installer/password password r00tme
+#d-i grub-installer/password-again password r00tme
+# or encrypted using an MD5 hash, see grub-md5-crypt(8).
+#d-i grub-installer/password-crypted password [MD5 hash]
+
+# Use the following option to add additional boot parameters for the
+# installed system (if supported by the bootloader installer).
+# Note: options passed to the installer will be added automatically.
+#d-i debian-installer/add-kernel-opts string nousb
+
+### Finishing up the installation
+# During installations from serial console, the regular virtual consoles
+# (VT1-VT6) are normally disabled in /etc/inittab. Uncomment the next
+# line to prevent this.
+#d-i finish-install/keep-consoles boolean true
+
+# Avoid that last message about the install being complete.
+d-i finish-install/reboot_in_progress note
+
+### Preseeding other packages
+# Depending on what software you choose to install, or if things go wrong
+# during the installation process, it's possible that other questions may
+# be asked. You can preseed those too, of course. To get a list of every
+# possible question that could be asked during an install, do an
+# installation, and then run these commands:
+#   debconf-get-selections --installer > file
+#   debconf-get-selections >> file
+
+
+#### Advanced options
+### Running custom commands during the installation
+# d-i preseeding is inherently not secure. Nothing in the installer checks
+# for attempts at buffer overflows or other exploits of the values of a
+# preconfiguration file like this one. Only use preconfiguration files from
+# trusted locations! To drive that home, and because it's generally useful,
+# here's a way to run any shell command you'd like inside the installer,
+# automatically.
+
+# This first command is run as early as possible, just after
+# preseeding is read.
+#d-i preseed/early_command string apt-install ca-certificates
+d-i preseed/late_command string apt-install bash i2p firefox, apt-transport-https, apt-transport-tor, i2p, firefox
