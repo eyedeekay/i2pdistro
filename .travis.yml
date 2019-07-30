@@ -7,7 +7,7 @@ dist: bionic
 
 before-install:
     - sudo apt-get update
-    - sudo apt-get install -y live-config live-build make git
+    - sudo apt-get install -y live-config live-build make git open-infrastructure-system-build
 
 install:
     - make build
