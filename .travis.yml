@@ -7,3 +7,6 @@ addons:
     - live-build
     - make
     - git
+
+script:
+    - make build
