@@ -58,7 +58,7 @@ all: config
 	@echo ca-certificates | tee -a config/package-lists/live.list.chroot | tee config/package-lists/live.list.binary
 	@echo user-setup | tee -a config/package-lists/live.list.chroot | tee config/package-lists/live.list.binary
 	@echo sudo | tee -a config/package-lists/live.list.chroot | tee config/package-lists/live.list.binary
-	make build
+	make build 2>&1 | tee build.log
 
 build:
-	sudo lb build 2>&1 | tee build.log
+	sudo lb build

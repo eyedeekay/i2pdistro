@@ -5,7 +5,7 @@ language: generic
 
 dist: bionic
 
-before-install:
+before_install:
     - sudo apt-get update
     - sudo apt-get install -y live-config live-build make git open-infrastructure-system-build
 
