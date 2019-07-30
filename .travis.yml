@@ -1,0 +1,9 @@
+
+dist: bionic
+addons:
+  apt:
+    packages:
+    - live-config
+    - live-build
+    - make
+    - git
