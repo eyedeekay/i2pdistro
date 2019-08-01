@@ -1,14 +1,15 @@
-
 sudo: required
-
 language: generic
-
 dist: bionic
-
 before_install:
-    - sudo apt-get update
-    - sudo apt-get install -y make git open-infrastructure-system-build
-
+  - sudo apt-get update
+  - sudo apt-get install -y make git open-infrastructure-system-build
 install:
-    - make build
-
+  - make build
+deploy:
+  provider: releases
+  api_key:
+    secure: W4beeS5ePf0LyVGZ+cUQnWEUzStgN00wONqqNDeGqxeH0nIdp844wPdRP86BwT/6r3igSv/vmo/eToqnsESuBQG0TvD4ch2E16jWE7taMDOLcEGeZWYz6KNdi+t5LWgFgQbSJ2ozgy1iI4zkmSCEKQfwFLxBUGyK88VtAT+fBZ//BA7OCoZiSmju7N9H8aqdDcn7Q2m4HWzA0IiLC2kFIjx+9h5oL8BmylFxeMBgMxnC8mGfk2tFP1Ex7yOhAjCWIHKSk5deKRZEbtW/jhNrdG98tLb/iulvAEEdCMqvP+uRlFfikAIZbvPjX47Y54O9fz5Hkw/bJtojRygdco4e54fWDSg7p+qC8uIN4w1NzY5HKaFR1rFfZ7NAG1Uen/tWFbS95UvaEjRTNXQJAEsV9JLmqHrU/hiptDzK2nbwaJcOeZjFFXQib1LmgZEvelo0ldwsMErYPutJ/l//ED6n/+dWqMHAEvKwhxPVn0oeuiBUEWD1uOqFgVDSY37CCXM0Q8EWvROpqd721sB5tNPb5m/zEr4IwYDX36GiKd/jX6mju4TfjtYYzf1k6C4pNUGYa/gRYYQOwrPNxyluKQthhrhbQaEJ7dRGapEm+DwD6Cj16W5A3nvmzNa4DFzd85FZh29kX4u46NpdaIlXWOvXErU2HXqKlUm4ropYgfGP6xs=
+  file: live-image-amd64.hybrid.iso
+  on:
+    repo: eyedeekay/i2pdistro
