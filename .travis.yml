@@ -16,5 +16,10 @@ deploy:
    - live-image-amd64.hybrid.files
    - live-image-amd64.hybrid.contents
    - live-image-amd64.hybrid.packages
+   - live-image-source.debian.contents
+   - live-image-source.debian.tar
+   - live-image-source.live.contents
+   - live-image-source.live.tar
+   - CHANGELOG
   on:
     repo: eyedeekay/i2pdistro

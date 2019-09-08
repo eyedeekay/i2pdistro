@@ -20839,3 +20839,33 @@ W: Download is performed unsandboxed as root as file 'grub_0.97-75.dsc' couldn't
 P: Begin executing hooks...
 [2019-09-07 22:59:15] lb source_checksums 
 P: Begin creating source sha256sum.txt...
+P: Begin creating source sha256sum.txt...
+[2019-09-07 23:01:50] lb source_iso 
+[2019-09-07 23:01:51] lb source_tar 
+P: Begin building source tarball...
+P: This may take a while.
+[2019-09-07 23:09:04] lb source_hdd 
+[2019-09-07 23:09:04] lb chroot_archives chroot remove
+P: Deconfiguring file /etc/apt/sources.list
+Get:1 http://ftp.us.debian.org/debian sid InRelease [139 kB]
+Get:2 http://deb.i2p2.de unstable InRelease [19.7 kB]
+Get:3 http://ftp.us.debian.org/debian sid/main Sources [8454 kB]
+Get:4 http://deb.i2p2.de unstable/main Sources [2272 B]
+Get:5 http://deb.i2p2.de unstable/main amd64 Packages [2860 B]
+Get:6 http://ftp.us.debian.org/debian sid/main amd64 Packages [8300 kB]
+Get:7 http://ftp.us.debian.org/debian sid/main Translation-en [6211 kB]
+Fetched 23.1 MB in 31s (753 kB/s)
+Reading package lists...
+[2019-09-07 23:09:38] lb chroot_hostname remove
+P: Deconfiguring file /etc/hostname
+P: Deconfiguring file /bin/hostname
+[2019-09-07 23:09:38] lb chroot_resolv remove
+P: Deconfiguring file /etc/resolv.conf
+[2019-09-07 23:09:39] lb chroot_hosts remove
+P: Deconfiguring file /etc/hosts
+P: Begin unmounting filesystems...
+P: Saving caches...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+make[1]: Leaving directory '/media/longterm/i2pdistro'
