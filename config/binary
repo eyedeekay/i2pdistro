@@ -4,7 +4,7 @@
 # (Default: fat32)
 LB_BINARY_FILESYSTEM="fat32"
 
-# $LB_APT_INDICES: set apt generic indices
+# $LB_APT_INDICES: set apt/aptitude generic indices
 # (Default: true)
 LB_APT_INDICES="true"
 
@@ -21,8 +21,8 @@ LB_BOOTAPPEND_INSTALL="file=/cdrom/install/i2p-preseed.txt"
 LB_BOOTAPPEND_LIVE_FAILSAFE="boot=live components memtest noapic noapm nodma nomce nolapic nomodeset nosmp nosplash vga=normal"
 
 # $LB_BOOTLOADERS: set bootloaders
-# (Default: syslinux)
-LB_BOOTLOADERS="syslinux"
+# (Default: syslinux,grub-efi)
+LB_BOOTLOADERS="syslinux,grub-efi"
 
 # $LB_CHECKSUMS: set checksums
 # (Default: sha256)
@@ -47,7 +47,7 @@ LB_DEBIAN_INSTALLER="live"
 
 # $LB_DEBIAN_INSTALLER_DISTRIBUTION: set debian-installer suite
 # (Default: empty)
-LB_DEBIAN_INSTALLER_DISTRIBUTION="stretch"
+LB_DEBIAN_INSTALLER_DISTRIBUTION="sid"
 
 # $LB_DEBIAN_INSTALLER_PRESEEDFILE: set debian-installer preseed filename/url
 # (Default: i2p-preseed.txt)
@@ -78,16 +78,16 @@ LB_HDD_PARTITION_START=""
 LB_ISO_APPLICATION="Debian Live"
 
 # $LB_ISO_PREPARER: set iso preparer
-# (Default: live-build $VERSION; http://live-systems.org/devel/live-build)
-LB_ISO_PREPARER="live-build $VERSION; http://live-systems.org/devel/live-build"
+# (Default: live-build $VERSION; https://debian-live.alioth.debian.org/live-build)
+LB_ISO_PREPARER="live-build $VERSION; https://debian-live.alioth.debian.org/live-build"
 
 # $LB_ISO_PUBLISHER: set iso publisher
-# (Default: Live Systems project; http://live-systems.org/; debian-live@lists.debian.org)
-LB_ISO_PUBLISHER="Live Systems project; http://live-systems.org/; debian-live@lists.debian.org"
+# (Default: Live Systems project; https://debian-live.alioth.debian.org/; debian-live@lists.debian.org)
+LB_ISO_PUBLISHER="Live Systems project; https://debian-live.alioth.debian.org/; debian-live@lists.debian.org"
 
 # $LB_ISO_VOLUME: set iso volume (max 32 chars)
-# (Default: Debian stretch $(date +%Y%m%d-%H:%M))
-LB_ISO_VOLUME="Debian stretch $(date +%Y%m%d-%H:%M)"
+# (Default: Debian sid $(date +%Y%m%d-%H:%M))
+LB_ISO_VOLUME="Debian sid $(date +%Y%m%d-%H:%M)"
 
 # $LB_JFFS2_ERASEBLOCK: set jffs2 eraseblock size
 # (Default: unset)
@@ -141,6 +141,14 @@ LB_NET_COW_SERVER=""
 # (Default: true)
 LB_NET_TARBALL="true"
 
+# $LB_ONIE: set onie
+# (Default: false)
+LB_ONIE="false"
+
+# $LB_ONIE_KERNEL_CMDLINE: set onie additional kernel cmdline options
+# (Default: )
+LB_ONIE_KERNEL_CMDLINE=""
+
 # $LB_FIRMWARE_BINARY: include firmware packages in debian-installer
 # (Default: true)
 LB_FIRMWARE_BINARY="true"
@@ -156,3 +164,7 @@ LB_SWAP_FILE_PATH=""
 # $LB_SWAP_FILE_SIZE: set swap file size
 # (Default: 512)
 LB_SWAP_FILE_SIZE="512"
+
+# $LB_UEFI_SECURE_BOOT: enable/disable UEFI secure boot
+# (Default: auto)
+LB_UEFI_SECURE_BOOT="auto"

@@ -1,26 +1,30 @@
 # config/common - common options for live-build(7)
 
-# $LB_APT_FTP_PROXY: set apt ftp proxy
+# $LB_APT: set package manager
+# (Default: apt)
+LB_APT="apt"
+
+# $LB_APT_FTP_PROXY: set apt/aptitude ftp proxy
 # (Default: autodetected or empty)
 LB_APT_FTP_PROXY=""
 
-# $LB_APT_HTTP_PROXY: set apt http proxy
+# $LB_APT_HTTP_PROXY: set apt/aptitude http proxy
 # (Default: autodetected or empty)
 LB_APT_HTTP_PROXY=""
 
-# $LB_APT_PIPELINE: set apt pipeline depth
+# $LB_APT_PIPELINE: set apt/aptitude pipeline depth
 # (Default: )
 LB_APT_PIPELINE=""
 
-# $LB_APT_RECOMMENDS: set apt recommends
+# $LB_APT_RECOMMENDS: set apt/aptitude recommends
 # (Default: true)
 LB_APT_RECOMMENDS="true"
 
-# $LB_APT_SECURE: set apt security
+# $LB_APT_SECURE: set apt/aptitude security
 # (Default: true)
 LB_APT_SECURE="true"
 
-# $LB_APT_SOURCE_ARCHIVES: set apt source entries in sources.list
+# $LB_APT_SOURCE_ARCHIVES: set apt/aptitude source entries in sources.list
 # (Default: true)
 LB_APT_SOURCE_ARCHIVES="true"
 
@@ -49,8 +53,8 @@ LB_DEBCONF_FRONTEND="noninteractive"
 LB_DEBCONF_PRIORITY="critical"
 
 # $LB_INITRAMFS: set initramfs hook
-# (Default: system-boot)
-LB_INITRAMFS="system-boot"
+# (Default: live-boot)
+LB_INITRAMFS="live-boot"
 
 # $LB_INITRAMFS_COMPRESSION: set initramfs compression
 # (Default: gzip)
@@ -108,6 +112,8 @@ _QUIET="false"
 
 # Internal stuff (FIXME)
 APT_OPTIONS="-y"
+APTITUDE_OPTIONS="--assume-yes"
 DEBOOTSTRAP_OPTIONS=""
+DEBOOTSTRAP_SCRIPT=""
 GZIP_OPTIONS="-6 --rsyncable"
 ISOHYBRID_OPTIONS=""

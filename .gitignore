@@ -1,1 +1,5 @@
 cache
+chroot
+binary
+*.iso
+*.iso.zsync

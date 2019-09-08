@@ -1,2 +1,6 @@
-system-boot
-system-config
+live-boot
+live-config
+live-config-systemd
+ca-certificates
+user-setup
+sudo
