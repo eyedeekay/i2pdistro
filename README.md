@@ -2,6 +2,8 @@
 
 Re-creating an I2P Linux Distro
 
+[![Build Status](https://travis-ci.org/eyedeekay/i2pdistro.svg?branch=master)](https://travis-ci.org/eyedeekay/i2pdistro)
+
 Mission
 =======
 
